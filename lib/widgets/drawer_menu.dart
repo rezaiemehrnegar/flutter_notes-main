@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import '../data/data_provider.dart';
 import '../routes.dart';
 import 'about_app_widget.dart';
@@ -14,7 +13,8 @@ class DrawerMenu extends StatelessWidget {
 
   final userData = DataProvider.userData;
 
-  Future<T?> _navigateReplacementNamed<T>(BuildContext context, String routeName) async {
+  Future<T?> _navigateReplacementNamed<T>(
+      BuildContext context, String routeName) async {
     final navigator = Navigator.of(context);
     final modalRoute = ModalRoute.of(context);
 
@@ -62,9 +62,16 @@ class DrawerMenu extends StatelessWidget {
     if (userData.isSignedIn) {
       return [
         ListTile(
-          leading: const Icon(Icons.sticky_note_2),
-          title: Text(localizations.note(2)),
-          onTap: () => _navigateReplacementNamed(context, AppRoute.notes),
+          leading: const Icon(
+            Icons.sticky_note_2,
+          ),
+          title: Text(
+            localizations.note(2),
+          ),
+          onTap: () => _navigateReplacementNamed(
+            context,
+            AppRoute.notes,
+          ),
         ),
       ];
     } else {

@@ -75,7 +75,9 @@ class TextFormInput extends FormField<String> {
                   icon: icon,
                   labelText: labelText,
                   errorMaxLines: 3,
-                  labelStyle: TextStyle(color: Theme.of(state.context).hintColor),
+                  labelStyle: TextStyle(
+                    color: Theme.of(state.context).hintColor,
+                  ),
                   // errorStyle: const TextStyle(color: Colors.redAccent),
                   contentPadding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
                   // suffixIcon: const Icon(Icons.check_circle),

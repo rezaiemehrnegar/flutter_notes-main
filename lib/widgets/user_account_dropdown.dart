@@ -102,10 +102,10 @@ class _UserAccountDropdownState extends State<UserAccountDropdown> {
 
 class _AccountDetails extends StatefulWidget {
   const _AccountDetails({
-    super.key,
     this.accountPicture,
     this.accountName,
     this.accountEmail,
+    // ignore: unused_element
     this.child,
     this.onTap,
     required this.isOpen,
@@ -343,7 +343,6 @@ class _AccountDetailsLayout extends MultiChildLayoutDelegate {
 
 class _AnimatedArrow extends AnimatedWidget {
   const _AnimatedArrow({
-    super.key,
     this.onTap,
     this.height,
     this.width,

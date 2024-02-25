@@ -33,7 +33,9 @@ class _ModelBindingScope<T> extends InheritedWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<T>('model', model));
+    properties.add(
+      DiagnosticsProperty<T>('model', model),
+    );
   }
 }
 
@@ -183,7 +185,8 @@ class ModelBinding<T> extends StatefulWidget {
   ///
   ///  * [debugCheckHasModelBinding], which asserts that the given context
   ///    has a [ModelBinding] ancestor.
-  static bool update<T>(BuildContext context, T newModel, {bool updateShouldNotify = false}) {
+  static bool update<T>(BuildContext context, T newModel,
+      {bool updateShouldNotify = false}) {
     assert(
       // ignore: unnecessary_null_comparison
       context != null,
@@ -200,7 +203,10 @@ class ModelBinding<T> extends StatefulWidget {
     assert(debugCheckHasModelBinding<T>(context));
 
     final scope = _ModelBindingScope.of<T>(context)!;
-    return scope.modelBindingState.updateModel(newModel, updateShouldNotify: updateShouldNotify);
+    return scope.modelBindingState.updateModel(
+      newModel,
+      updateShouldNotify: updateShouldNotify,
+    );
   }
 
   @override
@@ -294,19 +300,28 @@ class _ModelBindingState<T> extends State<ModelBinding<T>> {
 /// Does nothing if asserts are disabled. Always returns true.
 bool debugCheckHasModelBinding<T>(BuildContext context) {
   assert(() {
-    if (context.widget is! _ModelBindingScope<T> && context.findAncestorWidgetOfExactType<_ModelBindingScope<T>>() == null) {
-      throw FlutterError.fromParts(<DiagnosticsNode>[
-        ErrorSummary('No ModelBinding<$T> widget ancestor found.'),
-        ErrorDescription('${context.widget.runtimeType} widget require a ModelBinding<$T> widget ancestor.'),
-        context.describeWidget('The specific widget that could not find a ModelBinding<$T> ancestor was'),
-        context.describeOwnershipChain('The ownership chain for the affected widget is'),
-        ErrorHint(
-          'No ModelBinding<$T> ancestor could be found starting from the context '
-          'that was passed to ModelBinding.of<$T>(). This can happen because you '
-          'have not added a ModelBinding<$T> widget, or it can happen if the '
-          'context you use comes from a widget above that widget.',
-        ),
-      ]);
+    if (context.widget is! _ModelBindingScope<T> &&
+        context.findAncestorWidgetOfExactType<_ModelBindingScope<T>>() ==
+            null) {
+      throw FlutterError.fromParts(
+        <DiagnosticsNode>[
+          ErrorSummary('No ModelBinding<$T> widget ancestor found.'),
+          ErrorDescription(
+            '${context.widget.runtimeType} widget require a ModelBinding<$T> widget ancestor.',
+          ),
+          context.describeWidget(
+            'The specific widget that could not find a ModelBinding<$T> ancestor was',
+          ),
+          context.describeOwnershipChain(
+              'The ownership chain for the affected widget is'),
+          ErrorHint(
+            'No ModelBinding<$T> ancestor could be found starting from the context '
+            'that was passed to ModelBinding.of<$T>(). This can happen because you '
+            'have not added a ModelBinding<$T> widget, or it can happen if the '
+            'context you use comes from a widget above that widget.',
+          ),
+        ],
+      );
     }
     return true;
   }());

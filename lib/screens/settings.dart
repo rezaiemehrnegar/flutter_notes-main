@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localized_locales/flutter_localized_locales.dart';
-
 import '../data/app_options.dart';
 import '../data/data_provider.dart';
 import '../data/firebase/firebase_service.dart';
@@ -72,8 +71,14 @@ class SettingsScreen extends StatelessWidget {
           size: UserAvatar.defaultRadius * 2.0,
         ),
       );
-      titleWidget = Text(localizations.signInTo(localizations.appName));
-      subtitleWidget = Text(localizations.settingsSignInInfo);
+      titleWidget = Text(
+        localizations.signInTo(
+          localizations.appName,
+        ),
+      );
+      subtitleWidget = Text(
+        localizations.settingsSignInInfo,
+      );
     }
 
     return SettingListTile(
@@ -82,7 +87,10 @@ class SettingsScreen extends StatelessWidget {
       subtitle: subtitleWidget,
       onTap: () {
         if (userData.isSignedIn && !userData.currentUser!.isAnonymous) {
-          _navigateSetting(context, AccountSettingScreen(userData: userData));
+          _navigateSetting(
+            context,
+            AccountSettingScreen(userData: userData),
+          );
         } else {
           _navigate(context, AppRoute.signIn);
         }
@@ -114,21 +122,30 @@ class SettingsScreen extends StatelessWidget {
           icon: const Icon(Icons.translate),
           title: Text(localizations.settingsLanguage),
           onTap: () {
-            _navigateSetting(context, const LocalizationSettingScreen());
+            _navigateSetting(
+              context,
+              const LocalizationSettingScreen(),
+            );
           },
         ),
         SettingListTile(
           icon: const Icon(Icons.palette),
           title: Text(localizations.settingsTheme),
           onTap: () {
-            _navigateSetting(context, const ThemeModeSettingScreen());
+            _navigateSetting(
+              context,
+              const ThemeModeSettingScreen(),
+            );
           },
         ),
         SettingListTile(
           icon: const Icon(Icons.format_size),
           title: Text(localizations.settingsTextScale),
           onTap: () {
-            _navigateSetting(context, const TextScaleSettingScreen());
+            _navigateSetting(
+              context,
+              const TextScaleSettingScreen(),
+            );
           },
         ),
         const Divider(),
@@ -184,14 +201,19 @@ class AccountSettingScreen extends StatelessWidget {
     final userImage = user?.photoURL ?? '';
     final userEmail = user?.email ?? '';
     return Scaffold(
-      appBar: AppBar(title: Text(localizations.settingsAccount)),
+      appBar: AppBar(
+        title: Text(
+          localizations.settingsAccount,
+        ),
+      ),
       body: Scrollbar(
         trackVisibility: true,
         radius: Radius.zero,
         child: ListView(
           children: [
             TitleDrawerHeader(
-              padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
               child: UserAccountTile(
                 image: UserAvatar(
                   imageUrl: userImage,
@@ -226,11 +248,14 @@ class LocalizationSettingScreen extends StatefulWidget {
   });
 
   @override
-  State<LocalizationSettingScreen> createState() => _LocalizationSettingScreenState();
+  State<LocalizationSettingScreen> createState() =>
+      _LocalizationSettingScreenState();
 }
 
-class _LocalizationSettingScreenState extends State<LocalizationSettingScreen> with WidgetsBindingObserver {
-  static final nativeLocaleNames = LocaleNamesLocalizationsDelegate.nativeLocaleNames;
+class _LocalizationSettingScreenState extends State<LocalizationSettingScreen>
+    with WidgetsBindingObserver {
+  static final nativeLocaleNames =
+      LocaleNamesLocalizationsDelegate.nativeLocaleNames;
 
   /// A odered non-growable list of supported locales, created from the list of
   /// [AppLocalizations.supportedLocales].
@@ -245,7 +270,11 @@ class _LocalizationSettingScreenState extends State<LocalizationSettingScreen> w
     return List<Locale>.of(
       AppLocalizations.supportedLocales,
       growable: false,
-    )..sort((a, b) => a.toLanguageTag().compareTo(b.toLanguageTag()));
+    )..sort(
+        (a, b) => a.toLanguageTag().compareTo(
+              b.toLanguageTag(),
+            ),
+      );
   }
 
   late Locale selectedOption;
@@ -288,12 +317,20 @@ class _LocalizationSettingScreenState extends State<LocalizationSettingScreen> w
       if (_hasSupportedLocale())
         systemLocaleOption: DisplayOption(
           title: localizations.settingsSystemDefault,
-          subtitle: _capitalize(nativeLocaleNames[deviceResolvedLocale.toString()]),
+          subtitle: _capitalize(
+            nativeLocaleNames[deviceResolvedLocale.toString()],
+          ),
         ),
       for (var i = 0; i < supportedLocales.length; i++)
         supportedLocales[i]: DisplayOption(
-          title: _capitalize(nativeLocaleNames[supportedLocales[i].toString()])!,
-          subtitle: _capitalize(localeNames.nameOf(supportedLocales[i].toString())),
+          title: _capitalize(
+            nativeLocaleNames[supportedLocales[i].toString()],
+          )!,
+          subtitle: _capitalize(
+            localeNames.nameOf(
+              supportedLocales[i].toString(),
+            ),
+          ),
         )
     };
   }
@@ -312,7 +349,8 @@ class _LocalizationSettingScreenState extends State<LocalizationSettingScreen> w
     // it would select an invalid locale. In that case, don't select any option
     // by setting the selected option to a undefined locale (using the language
     // tag "und").
-    selectedOption = _hasSupportedLocale() ? appSettings.locale : deviceResolvedLocale;
+    selectedOption =
+        _hasSupportedLocale() ? appSettings.locale : deviceResolvedLocale;
 
     return SearchScreen(
       delegate: SettingsSearchDelegate(
@@ -339,9 +377,14 @@ class ThemeModeSettingScreen extends StatelessWidget {
   Map<ThemeMode, DisplayOption> _buildOptionsMap(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
     return {
-      ThemeMode.system: DisplayOption(title: localizations.settingsSystemDefault),
-      ThemeMode.dark: DisplayOption(title: localizations.settingsDarkTheme),
-      ThemeMode.light: DisplayOption(title: localizations.settingsLightTheme),
+      ThemeMode.system:
+          DisplayOption(title: localizations.settingsSystemDefault),
+      ThemeMode.dark: DisplayOption(
+        title: localizations.settingsDarkTheme,
+      ),
+      ThemeMode.light: DisplayOption(
+        title: localizations.settingsLightTheme,
+      ),
     };
   }
 
@@ -350,7 +393,11 @@ class ThemeModeSettingScreen extends StatelessWidget {
     final localizations = AppLocalizations.of(context)!;
     final appSettings = AppOptions.of(context);
     return Scaffold(
-      appBar: AppBar(title: Text(localizations.settingsTheme)),
+      appBar: AppBar(
+        title: Text(
+          localizations.settingsTheme,
+        ),
+      ),
       body: SettingRadioListItems<ThemeMode>(
         selectedOption: appSettings.themeMode,
         optionsMap: _buildOptionsMap(context),
@@ -414,9 +461,15 @@ class TextScaleSettingScreen extends StatelessWidget {
     final localizations = AppLocalizations.of(context)!;
     final appSettings = AppOptions.of(context);
     final optionsMap = _buildOptionsMap(context);
-    final selectedOption = appSettings.isValidTextScale ? appSettings.textScaleFactor : optionsMap.keys.first;
+    final selectedOption = appSettings.isValidTextScale
+        ? appSettings.textScaleFactor
+        : optionsMap.keys.first;
     return Scaffold(
-      appBar: AppBar(title: Text(localizations.settingsTextScale)),
+      appBar: AppBar(
+        title: Text(
+          localizations.settingsTextScale,
+        ),
+      ),
       body: SettingRadioListItems<double>(
         selectedOption: selectedOption,
         optionsMap: optionsMap,

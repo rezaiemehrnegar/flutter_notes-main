@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +40,10 @@ class MessageData with Diagnosticable {
       return true;
     }
     final listEquals = const DeepCollectionEquality().equals;
-    return other is MessageData && other.isVisible == isVisible && other.message == message && listEquals(other.actions, actions);
+    return other is MessageData &&
+        other.isVisible == isVisible &&
+        other.message == message &&
+        listEquals(other.actions, actions);
   }
 
   @override
@@ -56,9 +58,27 @@ class MessageData with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(FlagProperty('isVisible', value: isVisible, ifTrue: 'true', ifFalse: 'false', showName: true));
-    properties.add(StringProperty('message', message));
-    properties.add(IterableProperty<Widget>('actions', actions));
+    properties.add(
+      FlagProperty(
+        'isVisible',
+        value: isVisible,
+        ifTrue: 'true',
+        ifFalse: 'false',
+        showName: true,
+      ),
+    );
+    properties.add(
+      StringProperty(
+        'message',
+        message,
+      ),
+    );
+    properties.add(
+      IterableProperty<Widget>(
+        'actions',
+        actions,
+      ),
+    );
   }
 }
 
@@ -119,7 +139,8 @@ class BannerMessage extends StatefulWidget {
   static BannerMessageState of(BuildContext context) {
     assert(debugCheckHasBannerMessage(context));
 
-    final scope = context.dependOnInheritedWidgetOfExactType<_BannerMessageScope>()!;
+    final scope =
+        context.dependOnInheritedWidgetOfExactType<_BannerMessageScope>()!;
     return scope.bannerMessageState;
   }
 
@@ -134,7 +155,8 @@ class BannerMessage extends StatefulWidget {
   ///  * [of], which is a similar function, except that it will throw an
   ///    exception if a [BannerMessage] is not found in the given context.
   static BannerMessageState? maybeOf(BuildContext context) {
-    final scope = context.dependOnInheritedWidgetOfExactType<_BannerMessageScope>();
+    final scope =
+        context.dependOnInheritedWidgetOfExactType<_BannerMessageScope>();
     return scope?.bannerMessageState;
   }
 
@@ -151,7 +173,8 @@ class BannerMessage extends StatefulWidget {
   static MessageData dataOf(BuildContext context) {
     assert(debugCheckHasBannerMessage(context));
 
-    final scope = context.dependOnInheritedWidgetOfExactType<_BannerMessageScope>()!;
+    final scope =
+        context.dependOnInheritedWidgetOfExactType<_BannerMessageScope>()!;
     return scope.data;
   }
 
@@ -166,7 +189,8 @@ class BannerMessage extends StatefulWidget {
   ///
   /// If there is no [BannerMessage] in scope, then this will assert in debug
   /// mode, and throw an exception in release mode.
-  static MessageController<T?> show<T>(BuildContext context, {String? message, List<Widget>? actions}) {
+  static MessageController<T?> show<T>(BuildContext context,
+      {String? message, List<Widget>? actions}) {
     return BannerMessage.of(context).show(message: message, actions: actions);
   }
 
@@ -273,8 +297,15 @@ class BannerMessageState extends State<BannerMessage> {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<MessageData>('data', data));
-    properties.add(DiagnosticsProperty<MessageController?>('messageController', messageController));
+    properties.add(
+      DiagnosticsProperty<MessageData>('data', data),
+    );
+    properties.add(
+      DiagnosticsProperty<MessageController?>(
+        'messageController',
+        messageController,
+      ),
+    );
   }
 }
 
@@ -290,7 +321,8 @@ class _BannerMessageScope<T> extends InheritedWidget {
   final MessageData data;
 
   @override
-  bool updateShouldNotify(_BannerMessageScope old) => data != old.data || bannerMessageState != old.bannerMessageState;
+  bool updateShouldNotify(_BannerMessageScope old) =>
+      data != old.data || bannerMessageState != old.bannerMessageState;
 }
 
 /// An interface for controlling a message of a [BannerMessage].
@@ -331,19 +363,27 @@ class MessageController<T> {
 /// Does nothing if asserts are disabled. Always returns true.
 bool debugCheckHasBannerMessage(BuildContext context) {
   assert(() {
-    if (context.widget is! _BannerMessageScope && context.findAncestorWidgetOfExactType<_BannerMessageScope>() == null) {
-      throw FlutterError.fromParts(<DiagnosticsNode>[
-        ErrorSummary('No $BannerMessage widget ancestor found.'),
-        ErrorDescription('${context.widget.runtimeType} widget requires a $BannerMessage widget ancestor.'),
-        context.describeWidget('The specific widget that could not find a $BannerMessage ancestor was'),
-        context.describeOwnershipChain('The ownership chain for the affected widget is'),
-        ErrorHint(
-          'No $BannerMessage ancestor could be found starting from the context '
-          'that was passed to $BannerMessage.of(). This can happen because you '
-          'have not added a $BannerMessage widget, or it can happen if the '
-          'context you use comes from a widget above that widget.',
-        ),
-      ]);
+    if (context.widget is! _BannerMessageScope &&
+        context.findAncestorWidgetOfExactType<_BannerMessageScope>() == null) {
+      throw FlutterError.fromParts(
+        <DiagnosticsNode>[
+          ErrorSummary('No $BannerMessage widget ancestor found.'),
+          ErrorDescription(
+            '${context.widget.runtimeType} widget requires a $BannerMessage widget ancestor.',
+          ),
+          context.describeWidget(
+            'The specific widget that could not find a $BannerMessage ancestor was',
+          ),
+          context.describeOwnershipChain(
+              'The ownership chain for the affected widget is'),
+          ErrorHint(
+            'No $BannerMessage ancestor could be found starting from the context '
+            'that was passed to $BannerMessage.of(). This can happen because you '
+            'have not added a $BannerMessage widget, or it can happen if the '
+            'context you use comes from a widget above that widget.',
+          ),
+        ],
+      );
     }
     return true;
   }());

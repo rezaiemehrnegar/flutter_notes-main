@@ -1,10 +1,8 @@
 import 'dart:developer' as developer;
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import '../data/data_provider.dart';
 import '../data/firebase/auth_error_code.dart';
 import '../routes.dart';
@@ -27,7 +25,7 @@ class SignInScreen extends StatelessWidget {
 }
 
 class _SignInForm extends StatefulWidget {
-  const _SignInForm({super.key});
+  const _SignInForm();
 
   @override
   _SignInFormState createState() => _SignInFormState();
@@ -42,7 +40,6 @@ class _SignInFormState extends State<_SignInForm> {
   void initState() {
     super.initState();
     if (kDebugMode) {
-      // TODO: remove initState
       _emailController.text = 'test@email.com';
       _passwordController.text = 'password123';
     }
@@ -138,7 +135,6 @@ class _SignInFormState extends State<_SignInForm> {
 
 class _BodyWidget extends StatelessWidget {
   const _BodyWidget({
-    super.key,
     required this.emailController,
     required this.passwordController,
     this.onSignIn,
@@ -158,7 +154,6 @@ class _BodyWidget extends StatelessWidget {
   }
 
   List<Widget> signInMethods(BuildContext context) {
-    final localizations = AppLocalizations.of(context)!;
     return [
       // SignInButton(
       //   Buttons.Google,
@@ -241,7 +236,6 @@ class _BodyWidget extends StatelessWidget {
 
 class _NoAccount extends StatelessWidget {
   const _NoAccount({
-    super.key,
     required this.onPressed,
   });
 
@@ -264,7 +258,6 @@ class _NoAccount extends StatelessWidget {
 
 class _SignInButton extends StatelessWidget {
   const _SignInButton({
-    super.key,
     required this.onPressed,
   });
 
@@ -285,7 +278,6 @@ class _SignInButton extends StatelessWidget {
 
 class _SignUpButton extends StatelessWidget {
   const _SignUpButton({
-    super.key,
     required this.onPressed,
   });
 

@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 
@@ -31,7 +30,9 @@ class LocaleMatcher {
   ///
   /// This algorithm does not take language distance (how similar languages are
   /// to each other) into account.
-  static Locale localeListResolution(List<Locale>? desiredLocales, Iterable<Locale> supportedLocales, {FallbackLocale? fallback}) {
+  static Locale localeListResolution(
+      List<Locale>? desiredLocales, Iterable<Locale> supportedLocales,
+      {FallbackLocale? fallback}) {
     // If the fallback function is defined, use it. If the returned value by the
     // fallback function is not null return that value. Otherwise, return the
     // first locale in the supported list. If that value is also null then
@@ -69,7 +70,9 @@ class LocaleMatcher {
   ///
   /// This algorithm does not take language distance (how similar languages are
   /// to each other) into account.
-  static Locale localeLookup(Locale? desiredLocale, Iterable<Locale> supportedLocales, {FallbackLocale? fallback}) {
+  static Locale localeLookup(
+      Locale? desiredLocale, Iterable<Locale> supportedLocales,
+      {FallbackLocale? fallback}) {
     return _resolveLocale(
       [if (desiredLocale != null) desiredLocale],
       supportedLocales,
@@ -77,7 +80,9 @@ class LocaleMatcher {
     );
   }
 
-  static Locale _resolveLocale(List<Locale>? desiredLocales, Iterable<Locale> supportedLocales, {FallbackLocale? fallback}) {
+  static Locale _resolveLocale(
+      List<Locale>? desiredLocales, Iterable<Locale> supportedLocales,
+      {FallbackLocale? fallback}) {
     final locale = _localeResolution(desiredLocales, supportedLocales);
     if (locale != const Locale.fromSubtags()) {
       return locale;
@@ -107,7 +112,8 @@ class LocaleMatcher {
   ///
   /// This algorithm does not take language distance (how similar languages are
   /// to each other) into account.
-  static Locale _localeResolution(List<Locale>? desiredLocales, Iterable<Locale> supportedLocales) {
+  static Locale _localeResolution(
+      List<Locale>? desiredLocales, Iterable<Locale> supportedLocales) {
     var bestSupported = const Locale.fromSubtags();
     if (desiredLocales?.isEmpty ?? true) return bestSupported;
 
@@ -121,23 +127,31 @@ class LocaleMatcher {
         //
         // Distance values (lower better):
         // 0.0 > 0.5 > 0.75 > 1.0
-        if (desired.languageCode != 'und' && supported.languageCode == desired.languageCode) {
+        if (desired.languageCode != 'und' &&
+            supported.languageCode == desired.languageCode) {
           // The lower is the value, the better
           var matchDistance = 1.0;
-          if (supported.countryCode == desired.countryCode && supported.scriptCode == desired.scriptCode) {
+          if (supported.countryCode == desired.countryCode &&
+              supported.scriptCode == desired.scriptCode) {
             // Full match, closest distance
             matchDistance = 0.0;
-          } else if (supported.countryCode != null && supported.countryCode == desired.countryCode) {
+          } else if (supported.countryCode != null &&
+              supported.countryCode == desired.countryCode) {
             // Language and country code match, and they are not null
             matchDistance = 0.5;
-          } else if (supported.scriptCode != null && supported.scriptCode == desired.scriptCode) {
+          } else if (supported.scriptCode != null &&
+              supported.scriptCode == desired.scriptCode) {
             // Language and script code match, and they are not null
             matchDistance = 0.75;
           }
 
           // The more we go down the list the less the weight is
           final weightedDistance = i + matchDistance;
-          if (kDebugMode) debugPrint('$i $desired $supported, WeightedDistance: $weightedDistance, BestWeightedDistance $bestWeightedDistance');
+          if (kDebugMode) {
+            debugPrint(
+              '$i $desired $supported, WeightedDistance: $weightedDistance, BestWeightedDistance $bestWeightedDistance',
+            );
+          }
           if (bestWeightedDistance == 0.0) {
             // Cannot improve, is a perfect match and the best without a doubt
             return bestSupported;

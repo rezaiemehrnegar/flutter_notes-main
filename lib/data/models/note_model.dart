@@ -1,5 +1,4 @@
 import 'dart:ui' show Color;
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:uuid/uuid.dart';
@@ -26,7 +25,8 @@ class NoteModel {
   })  : id = id ?? const Uuid().v4(),
         lastEdit = lastEdit ?? DateTime.now();
 
-  factory NoteModel.fromSnapshot(DocumentSnapshot<Map<String, Object?>> snapshot) {
+  factory NoteModel.fromSnapshot(
+      DocumentSnapshot<Map<String, Object?>> snapshot) {
     return NoteModel(
       id: snapshot.id,
       userId: snapshot['userId'],

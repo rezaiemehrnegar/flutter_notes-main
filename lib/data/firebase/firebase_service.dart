@@ -389,7 +389,6 @@ class UserData<T> implements FirebaseAuthentication {
 
   @override
   Future<void> sendEmailVerification() async {
-    // TODO: implement sendEmailVerification
     // throw UnimplementedError();
 
     final user = _auth.currentUser;
@@ -415,7 +414,6 @@ class UserData<T> implements FirebaseAuthentication {
   }
 
   Future<void> verifyAccount(String oobCode) async {
-    // TODO: implement sendEmailVerification
     // throw UnimplementedError();
 
     await _auth.checkActionCode(oobCode);

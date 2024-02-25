@@ -10,7 +10,8 @@ class AuthErrorCode {
 
   /// The account already exists with the email address asserted by the
   /// credential.
-  static const String accountExistsWithDifferentCredential = 'account-exists-with-different-credential';
+  static const String accountExistsWithDifferentCredential =
+      'account-exists-with-different-credential';
 
   /// The reCAPTCHA response token was invalid, expired, or if the captcha
   /// method was called from a non-whitelisted domain.

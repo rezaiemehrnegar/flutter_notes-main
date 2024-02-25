@@ -1,9 +1,7 @@
 import 'dart:convert';
 import 'dart:developer' as developer;
-
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-
 import '../src/extensions/locale_utils.dart';
 import '../widgets/model_binding.dart';
 import 'local/app_shared_preferences.dart';
@@ -13,7 +11,9 @@ import 'local/app_shared_preferences.dart';
 /// This establishes the text scaling factor to use when rendering text,
 /// according to the user's platform preferences.
 double get deviceTextScaleFactor {
-  return WidgetsFlutterBinding.ensureInitialized().platformDispatcher.textScaleFactor;
+  return WidgetsFlutterBinding.ensureInitialized()
+      .platformDispatcher
+      .textScaleFactor;
 }
 
 /// The system-reported default locale of the device.
@@ -45,10 +45,12 @@ List<Locale>? _lastDeviceLocales;
 /// changed, if so, it updates with the new locale. If the device locales did
 /// not change, the [deviceResolvedLocale] value does not change, and keeps the
 /// previous value.
-Locale get deviceResolvedLocale => _deviceResolvedLocale ?? const Locale.fromSubtags();
+Locale get deviceResolvedLocale =>
+    _deviceResolvedLocale ?? const Locale.fromSubtags();
 Locale? _deviceResolvedLocale;
 set deviceResolvedLocale(Locale locale) {
-  final equalLocales = const IterableEquality<Locale>().equals(_lastDeviceLocales, deviceLocales);
+  final equalLocales = const IterableEquality<Locale>()
+      .equals(_lastDeviceLocales, deviceLocales);
   if (!equalLocales) {
     _deviceResolvedLocale = locale;
     _lastDeviceLocales = List.unmodifiable(deviceLocales);
@@ -95,7 +97,8 @@ class AppOptions {
   ///
   ///  * [isValidTextScale], to check if the text scale factor in the app
   ///   settings is considered valid.
-  double get textScaleFactor => isValidTextScale ? _textScaleFactor : deviceTextScaleFactor;
+  double get textScaleFactor =>
+      isValidTextScale ? _textScaleFactor : deviceTextScaleFactor;
   final double _textScaleFactor;
 
   /// An identifier used to select a user's language and formatting preferences.
@@ -119,7 +122,8 @@ class AppOptions {
   bool get isValidLocale => _locale != const Locale.fromSubtags();
 
   /// Creates an instance of this class from a JSON object.
-  factory AppOptions.fromJson(String str) => AppOptions.fromMap(json.decode(str));
+  factory AppOptions.fromJson(String str) =>
+      AppOptions.fromMap(json.decode(str));
 
   /// Creates an instance of this class from a map.
   factory AppOptions.fromMap(Map<String, Object?> map) {
@@ -175,7 +179,8 @@ class AppOptions {
   ///
   /// If [updateShouldNotify] is true, it will cause to rebuild the widget
   /// regardless of the current model being the same as the new [model] one.
-  static void update(BuildContext context, AppOptions model, {bool updateShouldNotify = false}) {
+  static void update(BuildContext context, AppOptions model,
+      {bool updateShouldNotify = false}) {
     final modelUpdated = ModelBinding.update<AppOptions>(
       context,
       model,
@@ -217,7 +222,10 @@ class AppOptions {
     if (identical(this, other)) {
       return true;
     }
-    return other is AppOptions && other.themeMode == themeMode && other._textScaleFactor == _textScaleFactor && other._locale == _locale;
+    return other is AppOptions &&
+        other.themeMode == themeMode &&
+        other._textScaleFactor == _textScaleFactor &&
+        other._locale == _locale;
   }
 
   @override
@@ -228,5 +236,6 @@ class AppOptions {
       );
 
   @override
-  String toString() => 'AppOptions(themeMode: $themeMode, textScaleFactor: $_textScaleFactor, locale: $_locale)';
+  String toString() =>
+      'AppOptions(themeMode: $themeMode, textScaleFactor: $_textScaleFactor, locale: $_locale)';
 }

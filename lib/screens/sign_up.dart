@@ -27,7 +27,7 @@ class SignUpScreen extends StatelessWidget {
 }
 
 class _SignUpForm extends StatefulWidget {
-  const _SignUpForm({super.key});
+  const _SignUpForm();
 
   @override
   _SignUpFormState createState() => _SignUpFormState();
@@ -46,7 +46,6 @@ class _SignUpFormState extends State<_SignUpForm> {
   void initState() {
     super.initState();
     if (kDebugMode) {
-      // TODO: remove initState
       // _emailController.text = 'test@email.com';
       _usernameController.text = 'NewUser';
       _emailController.text = 'new_usermail.co4m';
@@ -154,7 +153,6 @@ class _SignUpFormState extends State<_SignUpForm> {
 
 class _BodyWidget extends StatelessWidget {
   const _BodyWidget({
-    super.key,
     required this.usernameController,
     required this.emailController,
     required this.passwordController,
@@ -169,7 +167,8 @@ class _BodyWidget extends StatelessWidget {
   final TextEditingController passwordController;
   final TextEditingController confirmPasswordController;
 
-  Validation<String?> _validateNotEmpty(BuildContext context, String labelText) {
+  Validation<String?> _validateNotEmpty(
+      BuildContext context, String labelText) {
     final localizations = AppLocalizations.of(context)!;
     return Validation(
       errorMessage: localizations.validationEmpty(labelText),
@@ -179,32 +178,26 @@ class _BodyWidget extends StatelessWidget {
 
   Validation<String?> _validateEmailFormat(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
-    final regExp = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$");
+    final regExp = RegExp(
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$");
     return Validation(
       errorMessage: localizations.errorInvalidEmail,
       assertion: (value) => value != null && regExp.hasMatch(value),
     );
   }
 
-  @Deprecated('Replaced by _validateStrongPassword')
-  Validation<String?> _validateMinLength(BuildContext context, int minLength) {
-    final localizations = AppLocalizations.of(context)!;
-    return Validation(
-      errorMessage: localizations.validationMinLength(localizations.password, minLength),
-      assertion: (value) => value != null && value.length >= minLength,
-    );
-  }
-
   Validation<String?> _validateStrongPassword(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
-    final regExp = RegExp(r'^(?:(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}|.{15,})$');
+    final regExp =
+        RegExp(r'^(?:(?=.*\d)(?=.*[a-z])(?=.*[a-zA-Z]).{8,}|.{15,})$');
     return Validation(
       errorMessage: localizations.validationWeakPassword,
       assertion: (value) => value != null && regExp.hasMatch(value),
     );
   }
 
-  Validation<String?> _validateEqual(BuildContext context, TextEditingController controller, String labelText) {
+  Validation<String?> _validateEqual(BuildContext context,
+      TextEditingController controller, String labelText) {
     final localizations = AppLocalizations.of(context)!;
     return Validation(
       errorMessage: localizations.validationNotMatching(labelText),
@@ -231,9 +224,11 @@ class _BodyWidget extends StatelessWidget {
           controller: usernameController,
           onFieldSubmitted: _handleFieldSubmitted,
           autovalidateMode: AutovalidateMode.onUserInteraction,
-          fieldValidator: FieldValidator([
-            _validateNotEmpty(context, localizations.username),
-          ]),
+          fieldValidator: FieldValidator(
+            [
+              _validateNotEmpty(context, localizations.username),
+            ],
+          ),
         ),
         TextFormInput(
           labelText: localizations.email,
@@ -267,8 +262,15 @@ class _BodyWidget extends StatelessWidget {
           onFieldSubmitted: _handleFieldSubmitted,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           fieldValidator: FieldValidator([
-            _validateNotEmpty(context, localizations.passwordConfirm),
-            _validateEqual(context, passwordController, localizations.password),
+            _validateNotEmpty(
+              context,
+              localizations.passwordConfirm,
+            ),
+            _validateEqual(
+              context,
+              passwordController,
+              localizations.password,
+            ),
           ]),
         ),
         _SignUpButton(onPressed: onSignUp),
@@ -279,7 +281,6 @@ class _BodyWidget extends StatelessWidget {
 
 class _HaveAccount extends StatelessWidget {
   const _HaveAccount({
-    super.key,
     required this.onPressed,
   });
 
@@ -302,7 +303,6 @@ class _HaveAccount extends StatelessWidget {
 
 class _SignInButton extends StatelessWidget {
   const _SignInButton({
-    super.key,
     required this.onPressed,
   });
 
@@ -323,7 +323,6 @@ class _SignInButton extends StatelessWidget {
 
 class _SignUpButton extends StatelessWidget {
   const _SignUpButton({
-    super.key,
     required this.onPressed,
   });
 

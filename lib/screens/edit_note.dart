@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -36,7 +38,8 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
   void initState() {
     super.initState();
 
-    _colorOptions = PredefinedColor.values.map((e) => e.color).toList(growable: false);
+    _colorOptions =
+        PredefinedColor.values.map((e) => e.color).toList(growable: false);
 
     final resolvedIndex = _colorOptions.indexOf(widget.note.color);
     _currentIndex = resolvedIndex != -1 ? resolvedIndex : 0;
@@ -87,7 +90,8 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
     final theme = Theme.of(context);
     return TextButton(
       onPressed: _handleSave,
-      style: TextButton.styleFrom(foregroundColor: theme.primaryIconTheme.color),
+      style:
+          TextButton.styleFrom(foregroundColor: theme.primaryIconTheme.color),
       child: Text(localizations.saveButton),
     );
   }
@@ -139,12 +143,15 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                 child: Theme(
                   // Set overscroll color same as the note border
                   data: theme.copyWith(
-                    colorScheme: theme.colorScheme.copyWith(secondary: note.color),
+                    colorScheme:
+                        theme.colorScheme.copyWith(secondary: note.color),
                   ),
                   child: _ScrollableContent(
                     scrollController: _scrollController,
-                    titleEditingController: noteEditingController.titleController,
-                    contentEditingController: noteEditingController.contentController,
+                    titleEditingController:
+                        noteEditingController.titleController,
+                    contentEditingController:
+                        noteEditingController.contentController,
                   ),
                 ),
               ),
@@ -197,7 +204,9 @@ class NoteEditingController extends DataStateNotifier<NoteModel> {
     var newContent = content ?? value.content;
     var newColor = color ?? value.color;
 
-    if (newTitle != value.title || newContent != value.content || newColor != value.color) {
+    if (newTitle != value.title ||
+        newContent != value.content ||
+        newColor != value.color) {
       value = value.copyWith(
         title: title,
         content: content,
@@ -210,7 +219,6 @@ class NoteEditingController extends DataStateNotifier<NoteModel> {
 
 class _ColorOptionsNavBar extends StatefulWidget {
   const _ColorOptionsNavBar({
-    super.key,
     required this.selectedIndex,
     required this.colors,
     this.backgroundColor,
@@ -387,7 +395,8 @@ class _SectionDivider extends StatelessWidget {
 class _SaveChangesAlertDialog extends StatelessWidget {
   const _SaveChangesAlertDialog({super.key});
 
-  Widget _createButton(BuildContext context, String text, ChangesAction action) {
+  Widget _createButton(
+      BuildContext context, String text, ChangesAction action) {
     return TextButton(
       onPressed: () => Navigator.of(context, rootNavigator: true).pop(action),
       child: Text(text),
@@ -407,7 +416,8 @@ class _SaveChangesAlertDialog extends StatelessWidget {
         ),
       ),
       actions: [
-        _createButton(context, localizations.discardButton, ChangesAction.discard),
+        _createButton(
+            context, localizations.discardButton, ChangesAction.discard),
         _createButton(context, localizations.saveButton, ChangesAction.save),
       ],
     );

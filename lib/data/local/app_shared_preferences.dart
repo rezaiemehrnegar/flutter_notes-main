@@ -2,7 +2,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AppSharedPreferences {
   AppSharedPreferences._internal();
-  static final AppSharedPreferences _instance = AppSharedPreferences._internal();
+  static final AppSharedPreferences _instance =
+      AppSharedPreferences._internal();
 
   /// The current [SharedPreferences] instance, if one has been created.
   ///
@@ -17,7 +18,8 @@ class AppSharedPreferences {
   SharedPreferences? _sharedPreferences;
 
   static Future<SharedPreferences> initialize() async {
-    return _instance._sharedPreferences ??= await SharedPreferences.getInstance();
+    return _instance._sharedPreferences ??=
+        await SharedPreferences.getInstance();
   }
 
   /// Reads the value from persistent storage for the given [key], or `null` if

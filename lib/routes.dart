@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'screens/notes_list.dart';
 import 'screens/settings.dart';
 import 'screens/sign_in.dart';
@@ -117,7 +116,8 @@ class SettingsRouteBuilder<T> extends PageRouteBuilder<T> {
     super.fullscreenDialog,
     super.allowSnapshotting,
   }) : super(
-          pageBuilder: (context, animation, secondaryAnimation) => builder(context),
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              builder(context),
         ) {
     assert(opaque);
   }
@@ -125,7 +125,8 @@ class SettingsRouteBuilder<T> extends PageRouteBuilder<T> {
   final WidgetBuilder builder;
 
   @override
-  Widget buildTransitions(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+  Widget buildTransitions(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation, Widget child) {
     const begin = Offset(1.0, 0.0);
     const end = Offset.zero;
     const curve = Curves.easeIn;
@@ -155,7 +156,8 @@ class NoteRouteBuilder<T> extends PageRouteBuilder<T> {
     super.fullscreenDialog,
     super.allowSnapshotting,
   }) : super(
-          pageBuilder: (context, animation, secondaryAnimation) => builder(context),
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              builder(context),
         ) {
     assert(opaque);
   }
@@ -163,7 +165,8 @@ class NoteRouteBuilder<T> extends PageRouteBuilder<T> {
   final WidgetBuilder builder;
 
   @override
-  Widget buildTransitions(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+  Widget buildTransitions(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation, Widget child) {
     const curve = Curves.easeIn;
     final tween = CurveTween(curve: curve);
     return FadeTransition(

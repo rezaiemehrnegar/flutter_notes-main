@@ -55,7 +55,11 @@ class UserModel {
     if (identical(this, other)) {
       return true;
     }
-    return other is UserModel && other.id == id && other.email == email && other.displayName == displayName && other.imageUrl == imageUrl;
+    return other is UserModel &&
+        other.id == id &&
+        other.email == email &&
+        other.displayName == displayName &&
+        other.imageUrl == imageUrl;
   }
 
   @override

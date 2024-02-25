@@ -1,7 +1,5 @@
 import 'dart:developer' as developer;
-
 import 'package:flutter/material.dart';
-
 import '../src/cache/cached_color.dart';
 
 class ColorToggleButtons extends StatefulWidget {
@@ -109,8 +107,13 @@ class ColorButton extends StatelessWidget {
     final theme = Theme.of(context);
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: theme.iconTheme.color!, width: 1.0),
-        borderRadius: const BorderRadius.all(Radius.circular(2.0)),
+        border: Border.all(
+          color: theme.iconTheme.color!,
+          width: 1.0,
+        ),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(2.0),
+        ),
         color: color,
       ),
       child: icon ?? const Icon(null),

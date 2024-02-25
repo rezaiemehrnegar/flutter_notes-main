@@ -18,7 +18,9 @@ import 'widgets/model_binding.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await _configureFirebase();
   await AppSharedPreferences.initialize();
 
@@ -84,7 +86,8 @@ class NotesApp extends StatelessWidget {
   /// [baseline Material color scheme](https://material.io/design/color/the-color-system.html#color-theme-creation)
   final bool useBaselineMaterialTheme;
 
-  Locale? _localeListResolution(List<Locale>? locales, Iterable<Locale> supportedLocales) {
+  Locale? _localeListResolution(
+      List<Locale>? locales, Iterable<Locale> supportedLocales) {
     var locale = deviceResolvedLocale;
     if (locales?.first != systemLocaleOption) {
       // Resolve best locale from desired and supported locale list. If none is
@@ -129,8 +132,12 @@ class NotesApp extends StatelessWidget {
       locale: AppOptions.of(context).locale,
       localeListResolutionCallback: _localeListResolution,
       localeResolutionCallback: _localeResolution,
-      theme: useBaselineMaterialTheme ? ThemeData.from(colorScheme: const ColorScheme.light()) : ThemeData.light(),
-      darkTheme: useBaselineMaterialTheme ? ThemeData.from(colorScheme: const ColorScheme.dark()) : ThemeData.dark(),
+      theme: useBaselineMaterialTheme
+          ? ThemeData.from(colorScheme: const ColorScheme.light())
+          : ThemeData.light(),
+      darkTheme: useBaselineMaterialTheme
+          ? ThemeData.from(colorScheme: const ColorScheme.dark())
+          : ThemeData.dark(),
       themeMode: AppOptions.of(context).themeMode,
       initialRoute: userData.isSignedIn ? AppRoute.notes : AppRoute.signIn,
       onGenerateRoute: RouteConfiguration.onGenerateRoute,

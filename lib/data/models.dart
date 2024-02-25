@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'dart:developer' as developer;
-
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
-
 import 'data_provider.dart';
 import 'firebase/firebase_service.dart';
 import 'models/note_model.dart';
@@ -47,7 +45,8 @@ class NotesListModel with ChangeNotifier, DiagnosticableTreeMixin {
     Duration duration = const Duration(seconds: 2),
     bool notifyIsLoading = false,
   }) {
-    developer.log('loadDelayed(duration: $duration, notifyIsLoading: $notifyIsLoading)');
+    developer.log(
+        'loadDelayed(duration: $duration, notifyIsLoading: $notifyIsLoading)');
 
     return Future.delayed(
       duration,
@@ -86,7 +85,8 @@ class NotesListModel with ChangeNotifier, DiagnosticableTreeMixin {
   /// See also:
   ///
   ///  * [isLoading], to obtain if is currently loading.
-  Future<List<NoteModel>> _load(Future<List<NoteModel>> Function() operation, {bool notifyIsLoading = false}) {
+  Future<List<NoteModel>> _load(Future<List<NoteModel>> Function() operation,
+      {bool notifyIsLoading = false}) {
     _isLoading = true;
     if (notifyIsLoading) notifyListeners();
 
@@ -106,7 +106,8 @@ class NotesListModel with ChangeNotifier, DiagnosticableTreeMixin {
   ///
   /// *It should be only used for debugging*
   @visibleForTesting
-  Stream<List<NoteModel>> streamDelayed({Duration duration = const Duration(seconds: 2)}) {
+  Stream<List<NoteModel>> streamDelayed(
+      {Duration duration = const Duration(seconds: 2)}) {
     developer.log('streamDelayed(duration: $duration)');
     return streamData().delay(duration);
   }
@@ -117,7 +118,9 @@ class NotesListModel with ChangeNotifier, DiagnosticableTreeMixin {
     late Stream<List<NoteModel>> streamResult;
     if (userData.isSignedIn) {
       streamResult = notesCollection.stream(
-        (query) => query.where('userId', isEqualTo: user!.uid).orderBy('lastEdit', descending: true),
+        (query) => query
+            .where('userId', isEqualTo: user!.uid)
+            .orderBy('lastEdit', descending: true),
       );
     } else {
       streamResult = Stream.value(_notes);
@@ -222,7 +225,14 @@ class NotesListModel with ChangeNotifier, DiagnosticableTreeMixin {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(IterableProperty('notes', _notes));
-    properties.add(FlagProperty('isLoading', value: isLoading));
+    properties.add(
+      IterableProperty('notes', _notes),
+    );
+    properties.add(
+      FlagProperty(
+        'isLoading',
+        value: isLoading,
+      ),
+    );
   }
 }

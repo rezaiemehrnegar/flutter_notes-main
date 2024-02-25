@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-typedef DisplayWidgetBuilder<T> = Widget? Function(BuildContext context, T value);
+typedef DisplayWidgetBuilder<T> = Widget? Function(
+  BuildContext context,
+  T value,
+);
 
 @immutable
 class DisplayOption {
@@ -86,7 +89,8 @@ class SettingsHeader extends StatelessWidget {
   final Widget? subtitle;
   final EdgeInsetsGeometry padding;
 
-  Color? _textColor(ThemeData theme, ListTileThemeData tileTheme, Color? defaultColor) {
+  Color? _textColor(
+      ThemeData theme, ListTileThemeData tileTheme, Color? defaultColor) {
     return tileTheme.textColor ?? defaultColor;
   }
 
@@ -98,8 +102,12 @@ class SettingsHeader extends StatelessWidget {
 
   TextStyle _subtitleTextStyle(ThemeData theme, ListTileThemeData tileTheme) {
     final TextStyle style = theme.textTheme.bodyMedium!;
-    final Color? color = _textColor(theme, tileTheme, theme.textTheme.bodySmall!.color);
-    return style.copyWith(color: color, fontSize: 12.0);
+    final Color? color =
+        _textColor(theme, tileTheme, theme.textTheme.bodySmall!.color);
+    return style.copyWith(
+      color: color,
+      fontSize: 12.0,
+    );
   }
 
   Widget _buildTextWidget(Widget child, TextStyle textStyle) {
@@ -115,11 +123,17 @@ class SettingsHeader extends StatelessWidget {
     final theme = Theme.of(context);
     final tileTheme = ListTileTheme.of(context);
 
-    final titleWidget = _buildTextWidget(title, _titleTextStyle(theme, tileTheme));
+    final titleWidget = _buildTextWidget(
+      title,
+      _titleTextStyle(theme, tileTheme),
+    );
 
     Widget? subtitleWidget;
     if (subtitle != null) {
-      subtitleWidget = _buildTextWidget(subtitle!, _subtitleTextStyle(theme, tileTheme));
+      subtitleWidget = _buildTextWidget(
+        subtitle!,
+        _subtitleTextStyle(theme, tileTheme),
+      );
     }
 
     return Padding(

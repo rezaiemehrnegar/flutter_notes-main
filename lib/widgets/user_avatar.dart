@@ -100,7 +100,8 @@ class UserAvatar extends StatelessWidget {
   }
 
   Color _getRandomColor([int? seed]) {
-    return Color((math.Random(seed).nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
+    return Color((math.Random(seed).nextDouble() * 0xFFFFFF).toInt())
+        .withOpacity(1.0);
   }
 
   @override
@@ -122,7 +123,9 @@ class UserAvatar extends StatelessWidget {
       final regExp = RegExp(r'(?=\D)(\w)');
       final match = regExp.firstMatch(nameText)?.group(1);
 
-      final cachedColor = CachedColor(_getRandomColor(match.hashCode)); //TODO: Implement better cache system
+      final cachedColor = CachedColor(
+        _getRandomColor(match.hashCode),
+      );
 
       if (match != null) {
         backgroundColor = cachedColor.value;

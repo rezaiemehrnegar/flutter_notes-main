@@ -141,7 +141,8 @@ class MessageWidget extends StatelessWidget {
     if (_isSingleRow) {
       return const EdgeInsetsDirectional.only(start: 16.0, top: 2.0);
     }
-    return const EdgeInsetsDirectional.only(start: 16.0, top: 24.0, end: 16.0, bottom: 4.0);
+    return const EdgeInsetsDirectional.only(
+        start: 16.0, top: 24.0, end: 16.0, bottom: 4.0);
   }
 
   EdgeInsetsDirectional get _defaultLeadingPadding {
@@ -153,9 +154,20 @@ class MessageWidget extends StatelessWidget {
   }
 
   TextStyle _textStyle(ThemeData theme, MaterialBannerThemeData bannerTheme) {
-    final style = contentTextStyle ?? bannerTheme.contentTextStyle ?? theme.textTheme.bodyMedium!;
-    final color = _textColor(theme, bannerTheme, style.color);
-    return _isSingleRow ? style.copyWith(fontSize: 15.0, color: color) : style.copyWith(color: color);
+    final style = contentTextStyle ??
+        bannerTheme.contentTextStyle ??
+        theme.textTheme.bodyMedium!;
+    final color = _textColor(
+      theme,
+      bannerTheme,
+      style.color,
+    );
+    return _isSingleRow
+        ? style.copyWith(
+            fontSize: 15.0,
+            color: color,
+          )
+        : style.copyWith(color: color);
   }
 
   Color? _iconColor(ThemeData theme) {
@@ -168,11 +180,13 @@ class MessageWidget extends StatelessWidget {
     }
   }
 
-  Color? _textColor(ThemeData theme, MaterialBannerThemeData bannerTheme, Color? defaultColor) {
+  Color? _textColor(ThemeData theme, MaterialBannerThemeData bannerTheme,
+      Color? defaultColor) {
     return bannerTheme.contentTextStyle?.color ?? defaultColor;
   }
 
-  Color? _backgroundColor(ThemeData theme, MaterialBannerThemeData bannerTheme) {
+  Color? _backgroundColor(
+      ThemeData theme, MaterialBannerThemeData bannerTheme) {
     return color ?? bannerTheme.backgroundColor ?? theme.colorScheme.surface;
   }
 
@@ -183,8 +197,12 @@ class MessageWidget extends StatelessWidget {
 
     Widget? leadingIcon;
     if (leading != null) {
-      final iconThemeData = IconThemeData(color: _iconColor(theme));
-      final resolvedLeadingPadding = leadingPadding ?? bannerTheme.leadingPadding ?? _defaultLeadingPadding;
+      final iconThemeData = IconThemeData(
+        color: _iconColor(theme),
+      );
+      final resolvedLeadingPadding = leadingPadding ??
+          bannerTheme.leadingPadding ??
+          _defaultLeadingPadding;
 
       leadingIcon = Padding(
         padding: resolvedLeadingPadding,
@@ -199,7 +217,10 @@ class MessageWidget extends StatelessWidget {
     if (content != null) {
       contentText = Expanded(
         child: AnimatedDefaultTextStyle(
-          style: _textStyle(theme, bannerTheme),
+          style: _textStyle(
+            theme,
+            bannerTheme,
+          ),
           duration: kThemeChangeDuration,
           child: content!,
         ),
@@ -213,7 +234,8 @@ class MessageWidget extends StatelessWidget {
       children: actions,
     );
 
-    final resolvedContentPadding = contentPadding ?? bannerTheme.padding ?? _defaultContentPadding;
+    final resolvedContentPadding =
+        contentPadding ?? bannerTheme.padding ?? _defaultContentPadding;
 
     return SafeArea(
       child: Container(

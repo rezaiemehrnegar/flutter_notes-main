@@ -35,9 +35,13 @@ class DataState<T> {
   }
 }
 
-class DataStateNotifier<T> extends ChangeNotifier implements ValueListenable<T> {
+class DataStateNotifier<T> extends ChangeNotifier
+    implements ValueListenable<T> {
   /// Creates a [DataStateNotifier].
-  DataStateNotifier(T value) : this.fromState(DataState<T>(value));
+  DataStateNotifier(T value)
+      : this.fromState(
+          DataState<T>(value),
+        );
 
   /// Creates a [DataStateNotifier] from an initial [DataState].
   DataStateNotifier.fromState(DataState<T> state)

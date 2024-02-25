@@ -28,7 +28,8 @@ class NotesListScreen extends StatelessWidget {
 
   final NotesListModel notesListModel = NotesListModel();
 
-  Future<NoteModel?> _navigateEditNote(BuildContext context, NoteModel note) async {
+  Future<NoteModel?> _navigateEditNote(
+      BuildContext context, NoteModel note) async {
     final result = await Navigator.push<NoteModel>(
       context,
       NoteRouteBuilder(
@@ -45,7 +46,8 @@ class NotesListScreen extends StatelessWidget {
     final note = NoteModel(userId: userId);
     final resultNote = await _navigateEditNote(context, note);
 
-    if (resultNote != null && (resultNote.title.isNotEmpty || resultNote.content.isNotEmpty)) {
+    if (resultNote != null &&
+        (resultNote.title.isNotEmpty || resultNote.content.isNotEmpty)) {
       notesListModel.addNote(resultNote);
     }
   }
@@ -132,9 +134,9 @@ class NotesListScreen extends StatelessWidget {
 
 class _AccountWidget extends StatelessWidget {
   const _AccountWidget({
-    super.key,
     required this.userData,
     this.onTap,
+    // ignore: unused_element
     this.onTapImage,
   });
 
@@ -187,7 +189,7 @@ class _AccountWidget extends StatelessWidget {
 }
 
 class _DeleteAlertDialog extends StatelessWidget {
-  const _DeleteAlertDialog({super.key});
+  const _DeleteAlertDialog();
 
   TextButton _createButton(BuildContext context, String text, bool result) {
     return TextButton(
@@ -224,7 +226,7 @@ class NoteListWidget extends StatelessWidget {
     this.onMenuTap,
     this.onRefresh,
     this.controller,
-  })  : notes = notes ?? const [];
+  }) : notes = notes ?? const [];
 
   final List<NoteModel> notes;
   final void Function(NoteModel)? onTap;
@@ -236,9 +238,11 @@ class NoteListWidget extends StatelessWidget {
   final ScrollController? controller;
 
   /// Padding that prevents the FloatingActionButton from blocking ListTiles.
-  static const double listBottomPadding = kFloatingActionButtonMargin * 2.0 + 48.0;
+  static const double listBottomPadding =
+      kFloatingActionButtonMargin * 2.0 + 48.0;
 
-  PopupMenuItem<MenuAction> _buildPopMenuItem(MenuAction action, String text, Icon icon) {
+  PopupMenuItem<MenuAction> _buildPopMenuItem(
+      MenuAction action, String text, Icon icon) {
     return PopupMenuItem<MenuAction>(
       value: action,
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -292,7 +296,8 @@ class NoteListWidget extends StatelessWidget {
         controller: controller,
         dragStartBehavior: DragStartBehavior.down,
         physics: const AlwaysScrollableScrollPhysics(),
-        padding: const EdgeInsets.only(bottom: listBottomPadding), // Prevent FAB from blocking ListTiles
+        padding: const EdgeInsets.only(
+            bottom: listBottomPadding), // Prevent FAB from blocking ListTiles
         itemCount: notes.length,
         itemBuilder: (context, index) {
           final note = notes[index];
@@ -336,7 +341,8 @@ class NoteListWidget extends StatelessWidget {
                     Expanded(
                       child: ListTile(
                         contentPadding: const EdgeInsets.only(left: 16.0),
-                        mouseCursor: MouseCursor.defer, // Defer the cursor choice to widgets behind
+                        mouseCursor: MouseCursor
+                            .defer, // Defer the cursor choice to widgets behind
                         title: titleWidget,
                         subtitle: contentWidget,
                       ),
@@ -345,7 +351,8 @@ class NoteListWidget extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 8.0),
                       child: PopupMenuButton<MenuAction>(
                         itemBuilder: (context) => [
-                          _buildPopMenuItem(MenuAction.delete, localizations.delete, const Icon(Icons.delete)),
+                          _buildPopMenuItem(MenuAction.delete,
+                              localizations.delete, const Icon(Icons.delete)),
                         ],
                         onSelected: (value) => onMenuTap?.call(note, value),
                         padding: EdgeInsets.zero,

@@ -1,6 +1,5 @@
 import 'dart:collection';
 import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 
 /// Stores a [Color] value and keeps the created instance in a cache for later
@@ -55,7 +54,8 @@ class CachedColor {
   /// The cached map is wrapped around with an [UnmodifiableMapView], that
   /// forwards all members to the map, except for operations that modify the
   /// map. Modifying operations throw instead.
-  static UnmodifiableMapView<Color, CachedColor> get cache => UnmodifiableMapView(_cache);
+  static UnmodifiableMapView<Color, CachedColor> get cache =>
+      UnmodifiableMapView(_cache);
   static final Map<Color, CachedColor> _cache = SplayTreeMap(
     (a, b) => Comparable.compare(a.value, b.value),
   );
@@ -94,5 +94,6 @@ class CachedColor {
   static void clear() => _cache.clear();
 
   @override
-  String toString() => '$CachedColor(value: $value, relativeLuminance: $relativeLuminance, contrastRatio: $contrastRatio)';
+  String toString() =>
+      '$CachedColor(value: $value, relativeLuminance: $relativeLuminance, contrastRatio: $contrastRatio)';
 }

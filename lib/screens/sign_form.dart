@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 import '../src/utils/device_type.dart';
@@ -58,7 +60,6 @@ class SignFormScreen extends StatelessWidget {
 
 class _MessageCard extends StatelessWidget {
   const _MessageCard({
-    super.key,
     required this.message,
   });
 

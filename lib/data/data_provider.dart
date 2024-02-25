@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart' show immutable;
-
 import 'firebase/firebase_service.dart';
 import 'models/note_model.dart';
 import 'models/user_model.dart';

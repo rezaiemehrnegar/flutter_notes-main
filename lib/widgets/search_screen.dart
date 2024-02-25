@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 /// Delegate for [SearchScreen] to define the content of the search page.

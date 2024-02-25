@@ -73,8 +73,10 @@ class DefaultFirebaseOptions {
     projectId: 'notesproject-ab12c',
     databaseURL: 'https://notesproject-ab12c.firebaseio.com',
     storageBucket: 'notesproject-ab12c.appspot.com',
-    androidClientId: '787552385461-unrffto1s4r79293qomcag80f3km03fv.apps.googleusercontent.com',
-    iosClientId: '787552385461-bkl07ddvad16kpr96vkmc4e8vl9jj9kv.apps.googleusercontent.com',
+    androidClientId:
+        '787552385461-unrffto1s4r79293qomcag80f3km03fv.apps.googleusercontent.com',
+    iosClientId:
+        '787552385461-bkl07ddvad16kpr96vkmc4e8vl9jj9kv.apps.googleusercontent.com',
     iosBundleId: 'com.fermod.flutterNotes',
   );
 }
