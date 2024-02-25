@@ -40,7 +40,9 @@ class AboutAppWidget extends StatelessWidget {
 
         final version = StringBuffer(data.version);
         if (data.buildNumber.isNotEmpty) {
-          version.write(' (build: ${data.buildNumber})');
+          version.write(
+            ' (build: ${data.buildNumber})',
+          );
         }
 
         final iconTheme = IconTheme.of(context);
