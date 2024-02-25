@@ -1,0 +1,40 @@
+name: Deploy GitHub Pages
+on:
+  workflow_dispatch:
+    # Enable manual workflow run
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-20.04
+    env:
+      channel: stable
+    steps:
+      # Set up Flutter.
+      - name: Clone Flutter repository with ${{ env.channel }} channel
+        uses: subosito/flutter-action@v1.5.3
+        with:
+          channel: ${{ env.channel }}
+      - name: Run Flutter doctor
+        run: flutter doctor -v
+
+      # Clone the repository and get required packages.
+      - name: Clone the repository
+        uses: actions/checkout@v2
+      - name: Get packages for the Flutter project
+        run: flutter pub get
+
+      # Create web build.
+      - name: Create symbolic link
+        run: ln -s ./build/web ./docs
+      - name: Build project
+        run: flutter build -v web --base-href "/flutter_notes/"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./

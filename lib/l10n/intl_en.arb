@@ -1,0 +1,506 @@
+{
+  "@@locale": "en",
+  "appName": "Flutter Notes App",
+  "@appName": {
+    "description": "The name of the app. This should be the same name across different locale."
+  },
+  "appTitle": "Notes App",
+  "@appTitle": {
+    "description": "Title of the app."
+  },
+  "drawerTitle": "Menu",
+  "@drawerTitle": {
+    "description": "Title for the drawer widget."
+  },
+  "homepage": "Homepage",
+  "@homepage": {
+    "description": "Title for the Demo application."
+  },
+  "settingsAplicationHeader": "APLICATION",
+  "@settingsAplicationHeader": {
+    "description": "Title for the aplication settings header."
+  },
+  "settingsAplication": "Aplication",
+  "@settingsAplication": {
+    "description": "Title for the aplication setting."
+  },
+  "settingsAccountHeader": "ACCOUNT",
+  "@settingsAccountHeader": {
+    "description": "Title for the account setting header."
+  },
+  "settingsAccount": "Account",
+  "@settingsAccount": {
+    "description": "Title for the account setting."
+  },
+  "settingsSignInInfo": "Sync and access to your saved your notes across multiple devices",
+  "@settingsSignInInfo": {
+    "description": "Label text that shows information of the advantages of being signed in."
+  },
+  "settingsLanguage": "Language",
+  "@settingsLanguage": {
+    "description": "Title for the language setting."
+  },
+  "settingsTextScale": "Text Scale",
+  "@settingsTextScale": {
+    "description": "Title for the text scale setting."
+  },
+  "settingsTextScaleSmall": "Small",
+  "@settingsTextScaleSmall": {
+    "description": "Title for the huge text size scale setting."
+  },
+  "settingsTextScaleNormal": "Normal",
+  "@settingsTextScaleNormal": {
+    "description": "Title for the huge text size scale setting."
+  },
+  "settingsTextScaleLarge": "Large",
+  "@settingsTextScaleLarge": {
+    "description": "Title for the huge text size scale setting."
+  },
+  "settingsTextScaleHuge": "Huge",
+  "@settingsTextScaleHuge": {
+    "description": "Title for the huge text size scale setting."
+  },
+  "settingsTheme": "Theme",
+  "@settingsTheme": {
+    "description": "Title for the theme setting."
+  },
+  "settingsDarkTheme": "Dark",
+  "@settingsDarkTheme": {
+    "description": "Title for the dark theme setting."
+  },
+  "settingsLightTheme": "Light",
+  "@settingsLightTheme": {
+    "description": "Title for the light theme setting."
+  },
+  "settingsSystemDefault": "System default",
+  "@settingsSystemDefault": {
+    "description": "Option label to indicate the system default will be used."
+  },
+  "settingsTitle": "Settings",
+  "@settingsTitle": {
+    "description": "Title for the settings screen."
+  },
+  "settingsButtonLabel": "Settings",
+  "@settingsButtonLabel": {
+    "description": "Accessibility label for the settings button when settings are not showing."
+  },
+  "settingsButtonCloseLabel": "Close settings",
+  "@settingsButtonCloseLabel": {
+    "description": "Accessibility label for the settings button when settings are showing."
+  },
+  "note": "{howMany, plural, =1{Note} other{Notes}}",
+  "@note": {
+    "description": "Note text.",
+    "placeholders": {
+      "howMany": {
+        "example": "2"
+      }
+    }
+  },
+  "save": "Save",
+  "@save": {
+    "description": "Save menu text."
+  },
+  "discard": "Discard",
+  "@discard": {
+    "description": "Discard menu text."
+  },
+  "edit": "Edit",
+  "@edit": {
+    "description": "Edit menu text."
+  },
+  "delete": "Delete",
+  "@delete": {
+    "description": "Delete menu text."
+  },
+  "close": "Close",
+  "@close": {
+    "description": "Close menu text."
+  },
+  "closeButton": "CLOSE",
+  "@closeButton": {
+    "description": "Close button text."
+  },
+  "saveButton": "SAVE",
+  "@saveButton": {
+    "description": "Save button text."
+  },
+  "discardButton": "DISCARD",
+  "@discardButton": {
+    "description": "Discard button text."
+  },
+  "deleteButton": "DELETE",
+  "@deleteButton": {
+    "description": "Delete button text."
+  },
+  "cancelButton": "CANCEL",
+  "@cancelButton": {
+    "description": "Cancel button text."
+  },
+  "deleteDialogTitle": "Delete Note?",
+  "@deleteDialogTitle": {
+    "description": "Title of delete alert dialog."
+  },
+  "deleteDialogContent": "This will permanently delete the note.",
+  "@deleteDialogContent": {
+    "description": "Content of delete alert dialog."
+  },
+  "addNote": "Add note",
+  "@addNote": {
+    "description": "Add note label text."
+  },
+  "titleHint": "Insert title...",
+  "@titleHint": {
+    "description": "Add note title hint text."
+  },
+  "contentHint": "Insert text...",
+  "@contentHint": {
+    "description": "Add note content hint text."
+  },
+  "changeColor": "Change color",
+  "@changeColor": {
+    "description": "Change color of the note."
+  },
+  "saveChangesDialogTitle": "Save Changes?",
+  "@saveChangesDialogTitle": {
+    "description": "Title of dialog that shows when the changes have been not saved."
+  },
+  "saveChangesDialogContent": "Your changes have not been saved.",
+  "@saveChangesDialogContent": {
+    "description": "Content of dialog that shows when the changes have been not saved."
+  },
+  "email": "Email",
+  "@email": {
+    "description": "Label for a field for the user to input their email."
+  },
+  "emailConfirm": "Corfirm email",
+  "@emailConfirm": {
+    "description": "Label for a field for the user to confirm their email."
+  },
+  "username": "Username",
+  "@username": {
+    "description": "Label for a field for the user to input their username."
+  },
+  "usernameHelper": "username",
+  "@usernameHelper": {
+    "description": "The helper text of the username field in an form."
+  },
+  "displayName": "Display name",
+  "@displayName": {
+    "description": "Label for a field for the user to input their display name."
+  },
+  "password": "Password",
+  "@password": {
+    "description": "The password field in an form."
+  },
+  "passwordConfirm": "Confirm password",
+  "@passwordConfirm": {
+    "description": "The password confirmation field in an form."
+  },
+  "signIn": "Sign in",
+  "@signIn": {
+    "description": "Label text to sign in."
+  },
+  "notSignedIn": "Not signed in",
+  "@notSignedIn": {
+    "description": "Label text displaying that the user is not signed in."
+  },
+  "signInTitle": "Sign In",
+  "@signInTitle": {
+    "description": "Title of the sign in screen."
+  },
+  "signInWith": "Sign in with {socialMedia}",
+  "@signInWith": {
+    "description": "Label text to sign in with the specified [socialMedia] social media account.",
+    "placeholders": {
+      "socialMedia": {
+        "type": "String",
+        "example": "Google"
+      }
+    }
+  },
+  "signInTo": "Sign in to {appName}",
+  "@signInTo": {
+    "description": "Label text to sign in to the specified [appName].",
+    "placeholders": {
+      "appName": {
+        "type": "String",
+        "example": "My App"
+      }
+    }
+  },
+  "signInNoAccount": "Don't have an account?",
+  "@signInNoAccount": {
+    "description": "Prompt for signing up for an account."
+  },
+  "signInRememberMe": "Remember me",
+  "@signInRememberMe": {
+    "description": "Text if the user wants to stay signed in."
+  },
+  "signInOr": "OR",
+  "@signInOr": {
+    "description": "Text when signing in placed between dividers. Used to separate and show the user that alternative sign in methods exist."
+  },
+  "signOut": "Sign out",
+  "@signOut": {
+    "description": "Label text to sign out."
+  },
+  "signUpTitle": "Create your account",
+  "@signUpTitle": {
+    "description": "Title of the sign up screen."
+  },
+  "signUp": "Sign up",
+  "@signUp": {
+    "description": "Label text to sign up."
+  },
+  "signUpCreateAccount": "Create account",
+  "@signUpCreateAccount": {
+    "description": "Text of the button to create account."
+  },
+  "signUpHaveAccount": "Already have an account?",
+  "@signUpHaveAccount": {
+    "description": "Prompt for signing in with an existing account."
+  },
+  "passwordReset": "Reset your password",
+  "@passwordReset": {
+    "description": "Label text to password reset."
+  },
+  "passwordResetMessage": "Enter your user account's verified email address and we will send you a password reset link.",
+  "@passwordResetMessage": {
+    "description": "Label text to sign up."
+  },
+  "passwordResetHint": "Enter your email address",
+  "@passwordResetHint": {
+    "description": "Hint text of the field, to enter the password reset email address."
+  },
+  "passwordResetButton": "Send password reset email address",
+  "@passwordResetButton": {
+    "description": "Text of the button to send a password reset email."
+  },
+  "passwordResetReturn": "Return to sign in",
+  "@passwordResetReturn": {
+    "description": "Text of the button once a password reset email is sent."
+  },
+  "passwordResetSuccess": "Check your email for a link to reset your password. If it doesn’t appear within a few minutes, check your spam folder.",
+  "@passwordResetSuccess": {
+    "description": "Message when a password reset email is sent."
+  },
+  "validationEmptyField": "Please fill in this field.",
+  "@validationEmptyField": {
+    "description": "Validation message to show when required field is empty. To provide a field name use [validationEmpty]."
+  },
+  "validationEmpty": "Please fill in the {fieldName} field.",
+  "@validationEmpty": {
+    "description": "Validation message to show when the required [fieldName] is empty.",
+    "placeholders": {
+      "fieldName": {
+        "type": "String",
+        "example": "Username"
+      }
+    }
+  },
+  "validationWeakPassword": "Make sure it's at least 15 characters OR at least 8 characters including a number and a lowercase letter.",
+  "@validationWeakPassword": {
+    "description": "Validation message to show when password is considered too weak."
+  },
+  "validationMinLengthField": "Field length must be at least {minLength} characterers.",
+  "@validationMinLengthField": {
+    "description": "Validation message to show when the field length is less than the required [minLength]. To provide a field name use [validationMinLength].",
+    "placeholders": {
+      "minLength": {
+        "type": "int",
+        "format": "decimalPattern",
+        "example": "6"
+      }
+    }
+  },
+  "validationMinLength": "{fieldName} length must be at least {minLength} characterers.",
+  "@validationMinLength": {
+    "description": "Validation message to show when the field [fieldName] length is less than the required [minLength].",
+    "placeholders": {
+      "fieldName": {
+        "type": "String",
+        "example": "Password"
+      },
+      "minLength": {
+        "type": "int",
+        "format": "decimalPattern",
+        "example": "6"
+      }
+    }
+  },
+  "validationNotMatchingField": "Value do not match.",
+  "@validationNotMatchingField": {
+    "description": "Validation message to show when a field does not match with the value of other field. To provide a field name use [validationMatch]."
+  },
+  "validationNotMatching": "Please enter the same value in both {fieldName} fields.",
+  "@validationNotMatching": {
+    "description": "Validation message to show when a field value does not match with the value of the other [fieldName] field.",
+    "placeholders": {
+      "fieldName": {
+        "type": "String",
+        "example": "Password"
+      }
+    }
+  },
+  "validationNotSame": "Please enter the same {valueDescription} in both {fieldName} fields.",
+  "@validationNotSame": {
+    "description": "Validation message to show when a field value does not match with the value of the other [fieldName] field.",
+    "placeholders": {
+      "valueDescription": {
+        "type": "String",
+        "example": "address"
+      },
+      "fieldName": {
+        "type": "String",
+        "example": "email address"
+      }
+    }
+  },
+  "errorSignIn": "Incorrect email or password.",
+  "@errorSignIn": {
+    "description": "Sign in error message, when the email or the password are missing or wrong."
+  },
+  "errorUserNotFound": "That email address is not a verified primary email or is not associated with a personal user account.",
+  "@errorUserNotFound": {
+    "description": "Error message when no matching email address is found."
+  },
+  "errorWeakPassword": "The password is too weak.",
+  "@errorWeakPassword": {
+    "description": "Message text to show when a the introduced password is weak."
+  },
+  "errorInvalidEmail": "Please enter a valid email address.",
+  "@errorInvalidEmail": {
+    "description": "Message text to show when a the introduced email has not a valid format."
+  },
+  "errorEmailAlreadyInUse": "The email is already in use by another account.",
+  "@errorEmailAlreadyInUse": {
+    "description": "Message text to show when a the introduced email is already in use by another account."
+  },
+  "errorUserDisabled": "The user account with the given email is disabled.",
+  "@errorUserDisabled": {
+    "description": "Thrown if the user corresponding to the given email has been disabled."
+  },
+  "errorAccountExistsWithDifferentCredential": "There already exists an account with the email address asserted by the credential.",
+  "@errorAccountExistsWithDifferentCredential": {
+    "description": "Thrown when there already exists an account with the email address asserted by the credential. This should be resolved asking the user the sign in method."
+  },
+  "errorTooManyRequests": "Too many request from the same device made. Try again later.",
+  "@errorTooManyRequests": {
+    "description": "Thrown when request to a Firebase service has been blocked due to having received too many consecutive requests from the same device. Retry the request later to resolve."
+  },
+  "errorInvalidCredential": "The credential is malformed or has expired.",
+  "@errorInvalidCredential": {
+    "description": "Message text to show when the credential is malformed or has expired."
+  },
+  "errorInvalidVerificationCode": "The verification code of the credential is not valid",
+  "@errorInvalidVerificationCode": {
+    "description": "Message text to show when the verification code of the credential is not valid."
+  },
+  "errorInvalidVerificationId": "The verification ID of the credential is not valid",
+  "@errorInvalidVerificationId": {
+    "description": "Message text to show when the verification ID of the credential is not valid."
+  },
+  "errorOperationNotAllowed": "The type of account corresponding to the credential is not enabled.",
+  "@errorOperationNotAllowed": {
+    "description": "Message text to show when the type of account corresponding to the credential is not enabled. To prevent this error enable the account type in the Firebase Console, under the Auth tab."
+  },
+  "errorUnknown": "An unknown error happened.",
+  "@errorUnknown": {
+    "description": "Message text to show when an unknown error happens."
+  },
+  "aboutApp": "About",
+  "@aboutApp": {
+    "description": "Text for the widget that shows information obout the application. To provide the application name use [aboutNamedApp]."
+  },
+  "aboutNamedApp": "About {applicationName}",
+  "@aboutNamedApp": {
+    "description": "Text for the widget that shows information obout the application, with the given {applicationName} name.",
+    "placeholders": {
+      "applicationName": {
+        "type": "String",
+        "example": "My Cool App"
+      }
+    }
+  },
+  "und": "Undefined",
+  "@und": {
+    "description": "Name of the 'und' locale. The undefined locale."
+  },
+  "colorsRed": "Red",
+  "@colorsRed": {
+    "description": "Color name of red."
+  },
+  "colorsPink": "Pink",
+  "@colorsPink": {
+    "description": "Color name of pink."
+  },
+  "colorsPurple": "Purple",
+  "@colorsPurple": {
+    "description": "Color name of purple."
+  },
+  "colorsDeepPurple": "Deep purple",
+  "@colorsDeepPurple": {
+    "description": "Color name of deep purple."
+  },
+  "colorsIndigo": "Indigo",
+  "@colorsIndigo": {
+    "description": "Color name of indigo."
+  },
+  "colorsBlue": "Blue",
+  "@colorsBlue": {
+    "description": "Color name of blue."
+  },
+  "colorsLightBlue": "Light blue",
+  "@colorsLightBlue": {
+    "description": "Color name of light blue."
+  },
+  "colorsCyan": "Cyan",
+  "@colorsCyan": {
+    "description": "Color name of cyan."
+  },
+  "colorsTeal": "Teal",
+  "@colorsTeal": {
+    "description": "Color name of teal."
+  },
+  "colorsGreen": "Green",
+  "@colorsGreen": {
+    "description": "Color name of green."
+  },
+  "colorsLightGreen": "Light green",
+  "@colorsLightGreen": {
+    "description": "Color name of light green."
+  },
+  "colorsLime": "Lime",
+  "@colorsLime": {
+    "description": "Color name of lime."
+  },
+  "colorsYellow": "Yellow",
+  "@colorsYellow": {
+    "description": "Color name of yellow."
+  },
+  "colorsAmber": "Amber",
+  "@colorsAmber": {
+    "description": "Color name of amber."
+  },
+  "colorsOrange": "Orange",
+  "@colorsOrange": {
+    "description": "Color name of orange."
+  },
+  "colorsDeepOrange": "Deep orange",
+  "@colorsDeepOrange": {
+    "description": "Color name of deep orange."
+  },
+  "colorsBrown": "Brown",
+  "@colorsBrown": {
+    "description": "Color name of brown."
+  },
+  "colorsGrey": "Grey",
+  "@colorsGrey": {
+    "description": "Color name of grey."
+  },
+  "colorsBlueGrey": "Blue grey",
+  "@colorsBlueGrey": {
+    "description": "Color name of blue grey."
+  }
+}

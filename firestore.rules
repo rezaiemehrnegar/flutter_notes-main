@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+        
+    // True if the user is authenticated
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    // True if is authenticated and auth uid matches userUid
+    function hasAccess(userUid) {
+      return isSignedIn() && request.auth.uid == userUid;
+    }
+
+    // Users:
+    // If authenticated and userId matches.
+    //   - Authenticated user can read
+    //   - Authenticated user can write (create, update and delete)
+    match /users/{userId} {
+      allow read, write: if hasAccess(userId);
+    }
+
+    // Notes:
+    // If authenticated and userId matches.
+    //	 - Authenticated user can read
+    //	 - Authenticated user can write (create, update and delete)
+    match /notes/{noteId} {
+      allow read, update, delete: if hasAccess(resource.data.userId);
+      allow create: if hasAccess(request.resource.data.userId);
+    }
+    
+  }
+}

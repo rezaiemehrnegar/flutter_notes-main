@@ -1,0 +1,41 @@
+name: Unit Tests
+on:
+  push:
+    branches:
+      - main
+      - FerMod*
+  pull_request:
+      branches:
+        - main
+
+jobs:
+  test:
+    name: Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    env:
+      channel: stable
+    strategy:
+      matrix:
+        os: [ubuntu-20.04, windows-2019, macos-10.15]
+    steps:
+      # Set up Flutter.
+      - name: Clone Flutter repository with ${{ env.channel }} channel
+        uses: subosito/flutter-action@v1.5.3
+        with:
+          channel: ${{ env.channel }}
+      - name: Run Flutter doctor
+        run: flutter doctor -v
+
+      # Clone the repository and get required packages.
+      - name: Clone the repository
+        uses: actions/checkout@v2
+      - name: Get packages for the Flutter project
+        run: flutter pub get
+
+      # Analyze, check formatting, and run unit tests.
+      # - name: Analyze the project's Dart code
+      #   run: flutter analyze
+      # - name: Ensure the Dart code is formatted correctly
+      #   run: flutter format --set-exit-if-changed --dry-run .
+      - name: Run Flutter unit tests
+        run: flutter test

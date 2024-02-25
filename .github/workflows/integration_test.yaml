@@ -1,0 +1,35 @@
+name: Integration Tests
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  integration-test:
+    name: Integration tests
+    runs-on: ubuntu-20.04
+    env:
+      channel: stable
+    steps:
+      # Set up Flutter.
+      - name: Clone Flutter repository with ${{ env.channel }} channel
+        uses: subosito/flutter-action@v1.5.3
+        with:
+          channel: ${{ env.channel }}
+      - name: Run Flutter doctor
+        run: flutter doctor -v
+
+      # Clone the repository and get required packages.
+      - name: Clone the repository
+        uses: actions/checkout@v2
+      - name: Get packages for the Flutter project
+        run: flutter pub get
+
+      # Run integration tests.
+      - name: Enable build on web
+        run: flutter config --enable-web
+      # - name: Run Flutter integration tests
+      #   run: flutter test integration_test/integration_test.dart
