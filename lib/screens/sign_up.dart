@@ -1,10 +1,8 @@
 import 'dart:developer' as developer;
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import '../data/data_provider.dart';
 import '../data/firebase/auth_error_code.dart';
 import '../routes.dart';
@@ -232,7 +230,10 @@ class _BodyWidget extends StatelessWidget {
         ),
         TextFormInput(
           labelText: localizations.email,
-          icon: Icon(Icons.email, color: theme.iconTheme.color),
+          icon: Icon(
+            Icons.email,
+            color: theme.iconTheme.color,
+          ),
           controller: emailController,
           keyboardType: TextInputType.emailAddress,
           onFieldSubmitted: _handleFieldSubmitted,
@@ -244,13 +245,19 @@ class _BodyWidget extends StatelessWidget {
         ),
         TextFormInput(
           labelText: localizations.password,
-          icon: Icon(Icons.lock, color: theme.iconTheme.color),
+          icon: Icon(
+            Icons.lock,
+            color: theme.iconTheme.color,
+          ),
           controller: passwordController,
           obscureText: true,
           onFieldSubmitted: _handleFieldSubmitted,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           fieldValidator: FieldValidator([
-            _validateNotEmpty(context, localizations.password),
+            _validateNotEmpty(
+              context,
+              localizations.password,
+            ),
             _validateStrongPassword(context),
           ]),
         ),

@@ -1,10 +1,8 @@
 import 'dart:developer' as developer;
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
-
 import '../data/data_provider.dart';
 import '../data/firebase/firebase_service.dart';
 import '../data/models.dart';
@@ -100,9 +98,13 @@ class NotesListScreen extends StatelessWidget {
         stream: notesListModel.streamData(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            developer.log('Snapshot Error: ${snapshot.error}');
+            developer.log(
+              'Snapshot Error: ${snapshot.error}',
+            );
           }
-          developer.log('ConnectionState: ${snapshot.connectionState}');
+          developer.log(
+            'ConnectionState: ${snapshot.connectionState}',
+          );
           switch (snapshot.connectionState) {
             case ConnectionState.active:
             case ConnectionState.done:
@@ -122,7 +124,10 @@ class NotesListScreen extends StatelessWidget {
       floatingActionButton: Visibility(
         visible: userData.isSignedIn,
         child: FloatingActionButton(
-          onPressed: () => _newNote(context, userData.currentUser!.uid),
+          onPressed: () => _newNote(
+            context,
+            userData.currentUser!.uid,
+          ),
           tooltip: localizations.addNote,
           heroTag: 'note-new',
           child: const Icon(Icons.add),
@@ -297,7 +302,8 @@ class NoteListWidget extends StatelessWidget {
         dragStartBehavior: DragStartBehavior.down,
         physics: const AlwaysScrollableScrollPhysics(),
         padding: const EdgeInsets.only(
-            bottom: listBottomPadding), // Prevent FAB from blocking ListTiles
+          bottom: listBottomPadding,
+        ), // Prevent FAB from blocking ListTiles
         itemCount: notes.length,
         itemBuilder: (context, index) {
           final note = notes[index];
@@ -331,7 +337,10 @@ class NoteListWidget extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: Text(
-                    _formatDate(localizations.localeName, note.lastEdit),
+                    _formatDate(
+                      localizations.localeName,
+                      note.lastEdit,
+                    ),
                     style: theme.textTheme.bodySmall,
                   ),
                 ),
@@ -351,8 +360,11 @@ class NoteListWidget extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 8.0),
                       child: PopupMenuButton<MenuAction>(
                         itemBuilder: (context) => [
-                          _buildPopMenuItem(MenuAction.delete,
-                              localizations.delete, const Icon(Icons.delete)),
+                          _buildPopMenuItem(
+                            MenuAction.delete,
+                            localizations.delete,
+                            const Icon(Icons.delete),
+                          ),
                         ],
                         onSelected: (value) => onMenuTap?.call(note, value),
                         padding: EdgeInsets.zero,

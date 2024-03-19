@@ -61,7 +61,10 @@ class _SignInFormState extends State<_SignInForm> {
     final userData = DataProvider.userData;
 
     try {
-      final credential = await userData.signIn(_emailController.text, _passwordController.text);
+      final credential = await userData.signIn(
+        _emailController.text,
+        _passwordController.text,
+      );
       developer.log('$credential');
       if (!mounted) return;
       final navigator = Navigator.of(context);
@@ -69,7 +72,10 @@ class _SignInFormState extends State<_SignInForm> {
       await navigator.pushReplacementNamed(AppRoute.notes);
     } on FirebaseAuthException catch (e) {
       if (!mounted) rethrow;
-      BannerMessage.show(context, message: _errorMessage(e.code));
+      BannerMessage.show(
+        context,
+        message: _errorMessage(e.code),
+      );
     }
   }
 
@@ -90,7 +96,10 @@ class _SignInFormState extends State<_SignInForm> {
   }
 
   void _handleOnSignUp() {
-    Navigator.pushNamed(context, AppRoute.signUp);
+    Navigator.pushNamed(
+      context,
+      AppRoute.signUp,
+    );
   }
 
   @override
@@ -145,7 +154,8 @@ class _BodyWidget extends StatelessWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
 
-  Validation<String?> _validateNotEmpty(BuildContext context, String labelText) {
+  Validation<String?> _validateNotEmpty(
+      BuildContext context, String labelText) {
     final localizations = AppLocalizations.of(context)!;
     return Validation(
       errorMessage: localizations.validationEmpty(labelText),
@@ -207,12 +217,18 @@ class _BodyWidget extends StatelessWidget {
       children: [
         TextFormInput(
           labelText: localizations.email,
-          icon: Icon(Icons.person, color: theme.iconTheme.color),
+          icon: Icon(
+            Icons.person,
+            color: theme.iconTheme.color,
+          ),
           controller: emailController,
           keyboardType: TextInputType.emailAddress,
           onFieldSubmitted: _handleFieldSubmitted,
           fieldValidator: FieldValidator([
-            _validateNotEmpty(context, localizations.email),
+            _validateNotEmpty(
+              context,
+              localizations.email,
+            ),
           ]),
         ),
         TextFormInput(
@@ -222,11 +238,18 @@ class _BodyWidget extends StatelessWidget {
           controller: passwordController,
           onFieldSubmitted: _handleFieldSubmitted,
           fieldValidator: FieldValidator([
-            _validateNotEmpty(context, localizations.password),
+            _validateNotEmpty(
+              context,
+              localizations.password,
+            ),
           ]),
         ),
         _SignInButton(onPressed: onSignIn),
-        DividerText(child: Text(localizations.signInOr)),
+        DividerText(
+          child: Text(
+            localizations.signInOr,
+          ),
+        ),
         // divider,
         // ...signInMethods(context),
       ],

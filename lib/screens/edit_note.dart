@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import '../data/models/note_model.dart';
 import '../src/cache/cached_color.dart';
 import '../src/restorable_state.dart';
@@ -90,8 +89,9 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
     final theme = Theme.of(context);
     return TextButton(
       onPressed: _handleSave,
-      style:
-          TextButton.styleFrom(foregroundColor: theme.primaryIconTheme.color),
+      style: TextButton.styleFrom(
+        foregroundColor: theme.primaryIconTheme.color,
+      ),
       child: Text(localizations.saveButton),
     );
   }
@@ -109,7 +109,9 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
     setState(() {
       _currentIndex = index;
     });
-    noteEditingController.updateWith(color: _colorOptions[index]);
+    noteEditingController.updateWith(
+      color: _colorOptions[index],
+    );
   }
 
   @override
@@ -133,7 +135,9 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
           tag: 'note-${note.id}',
           color: note.color,
           shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(4.0)),
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(4.0),
+            ),
           ),
           margin: EdgeInsets.zero,
           child: Column(
@@ -143,8 +147,9 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                 child: Theme(
                   // Set overscroll color same as the note border
                   data: theme.copyWith(
-                    colorScheme:
-                        theme.colorScheme.copyWith(secondary: note.color),
+                    colorScheme: theme.colorScheme.copyWith(
+                      secondary: note.color,
+                    ),
                   ),
                   child: _ScrollableContent(
                     scrollController: _scrollController,
@@ -308,12 +313,14 @@ class _ScrollableContent extends StatelessWidget {
         controller: scrollController,
         slivers: [
           SliverList(
-            delegate: SliverChildListDelegate.fixed([
-              _NoteTitleInput(
-                titleEditingController: titleEditingController,
-              ),
-              const _SectionDivider(),
-            ]),
+            delegate: SliverChildListDelegate.fixed(
+              [
+                _NoteTitleInput(
+                  titleEditingController: titleEditingController,
+                ),
+                const _SectionDivider(),
+              ],
+            ),
           ),
           SliverFillRemaining(
             hasScrollBody: false,
@@ -417,8 +424,15 @@ class _SaveChangesAlertDialog extends StatelessWidget {
       ),
       actions: [
         _createButton(
-            context, localizations.discardButton, ChangesAction.discard),
-        _createButton(context, localizations.saveButton, ChangesAction.save),
+          context,
+          localizations.discardButton,
+          ChangesAction.discard,
+        ),
+        _createButton(
+          context,
+          localizations.saveButton,
+          ChangesAction.save,
+        ),
       ],
     );
   }

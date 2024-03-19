@@ -132,7 +132,9 @@ class SettingsRouteBuilder<T> extends PageRouteBuilder<T> {
     const curve = Curves.easeIn;
 
     final tween = Tween(begin: begin, end: end);
-    tween.chain(CurveTween(curve: curve));
+    tween.chain(
+      CurveTween(curve: curve),
+    );
 
     return SlideTransition(
       position: animation.drive(tween),

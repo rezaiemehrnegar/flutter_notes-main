@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localized_locales/flutter_localized_locales.dart';
 import 'package:url_strategy/url_strategy.dart';
-
 import 'data/app_options.dart';
 import 'data/data_provider.dart';
 import 'data/local/app_shared_preferences.dart';
@@ -114,7 +113,9 @@ class NotesApp extends StatelessWidget {
 
   Locale? _localeResolution(Locale? locale, Iterable<Locale> supportedLocales) {
     final resolvedLocale = locale ?? deviceResolvedLocale;
-    FirebaseAuth.instance.setLanguageCode(resolvedLocale.languageCode);
+    FirebaseAuth.instance.setLanguageCode(
+      resolvedLocale.languageCode,
+    );
     return locale;
   }
 
@@ -133,10 +134,14 @@ class NotesApp extends StatelessWidget {
       localeListResolutionCallback: _localeListResolution,
       localeResolutionCallback: _localeResolution,
       theme: useBaselineMaterialTheme
-          ? ThemeData.from(colorScheme: const ColorScheme.light())
+          ? ThemeData.from(
+              colorScheme: const ColorScheme.light(),
+            )
           : ThemeData.light(),
       darkTheme: useBaselineMaterialTheme
-          ? ThemeData.from(colorScheme: const ColorScheme.dark())
+          ? ThemeData.from(
+              colorScheme: const ColorScheme.dark(),
+            )
           : ThemeData.dark(),
       themeMode: AppOptions.of(context).themeMode,
       initialRoute: userData.isSignedIn ? AppRoute.notes : AppRoute.signIn,
@@ -148,7 +153,9 @@ class NotesApp extends StatelessWidget {
         final appSettings = AppOptions.of(context);
         return MediaQuery(
           data: MediaQuery.of(context).copyWith(
-            textScaler: TextScaler.linear(appSettings.textScaleFactor),
+            textScaler: TextScaler.linear(
+              appSettings.textScaleFactor,
+            ),
           ),
           child: child!,
         );

@@ -115,12 +115,16 @@ class SettingsScreen extends StatelessWidget {
     final localizations = AppLocalizations.of(context)!;
     return SettingsGroup(
       title: SettingsHeader(
-        title: Text(localizations.settingsAplicationHeader),
+        title: Text(
+          localizations.settingsAplicationHeader,
+        ),
       ),
       children: [
         SettingListTile(
           icon: const Icon(Icons.translate),
-          title: Text(localizations.settingsLanguage),
+          title: Text(
+            localizations.settingsLanguage,
+          ),
           onTap: () {
             _navigateSetting(
               context,
@@ -130,7 +134,9 @@ class SettingsScreen extends StatelessWidget {
         ),
         SettingListTile(
           icon: const Icon(Icons.palette),
-          title: Text(localizations.settingsTheme),
+          title: Text(
+            localizations.settingsTheme,
+          ),
           onTap: () {
             _navigateSetting(
               context,
@@ -140,7 +146,9 @@ class SettingsScreen extends StatelessWidget {
         ),
         SettingListTile(
           icon: const Icon(Icons.format_size),
-          title: Text(localizations.settingsTextScale),
+          title: Text(
+            localizations.settingsTextScale,
+          ),
           onTap: () {
             _navigateSetting(
               context,

@@ -1,7 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-
 import '../src/utils/device_type.dart';
 import '../widgets/banner_message.dart';
 import '../widgets/drawer_menu.dart';
@@ -39,7 +38,8 @@ class SignFormScreen extends StatelessWidget {
               builder: (context, constraints) {
                 if (DeviceType.isDesktopOrWeb) {
                   final textScaleFactor = MediaQuery.textScalerOf(context);
-                  final desktopMaxWidth = 400.0 + 100.0 * (textScaleFactor.textScaleFactor - 1);
+                  final desktopMaxWidth =
+                      400.0 + 100.0 * (textScaleFactor.textScaleFactor - 1);
                   constraints = constraints.copyWith(maxWidth: desktopMaxWidth);
                 }
 
@@ -83,7 +83,9 @@ class _MessageCard extends StatelessWidget {
       actionsList = <Widget>[
         TextButton(
           onPressed: () => BannerMessage.hide(context),
-          child: Text(materialLocalizations.closeButtonLabel),
+          child: Text(
+            materialLocalizations.closeButtonLabel,
+          ),
         ),
       ];
     }
@@ -125,7 +127,8 @@ class DismissibleKeyboard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         final currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
           currentFocus.unfocus();
         }
       },
